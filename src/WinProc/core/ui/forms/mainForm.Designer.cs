@@ -32,10 +32,14 @@
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.ver = new System.Windows.Forms.ToolStripStatusLabel();
+            this.spacer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.counter = new System.Windows.Forms.ToolStripStatusLabel();
             this.procslist = new System.Windows.Forms.ListView();
             this.processid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.processname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,10 +47,6 @@
             this.processfile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.popupMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.killProcessMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spacer = new System.Windows.Forms.ToolStripStatusLabel();
-            this.counter = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.popupMenu.SuspendLayout();
@@ -79,6 +79,21 @@
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // refreshMenuItem
+            // 
+            this.refreshMenuItem.Name = "refreshMenuItem";
+            this.refreshMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.refreshMenuItem.Text = "Refresh";
+            this.refreshMenuItem.Click += new System.EventHandler(this.refreshMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -110,7 +125,19 @@
             // 
             this.ver.Name = "ver";
             this.ver.Size = new System.Drawing.Size(44, 17);
-            this.ver.Text = "var. 1.0";
+            this.ver.Text = "ver. 1.0";
+            // 
+            // spacer
+            // 
+            this.spacer.Name = "spacer";
+            this.spacer.Size = new System.Drawing.Size(453, 17);
+            this.spacer.Spring = true;
+            // 
+            // counter
+            // 
+            this.counter.Name = "counter";
+            this.counter.Size = new System.Drawing.Size(48, 17);
+            this.counter.Text = "counter";
             // 
             // procslist
             // 
@@ -167,33 +194,6 @@
             this.killProcessMenuItem.Size = new System.Drawing.Size(133, 22);
             this.killProcessMenuItem.Text = "Kill Process";
             this.killProcessMenuItem.Click += new System.EventHandler(this.killProcessMenuItem_Click);
-            // 
-            // spacer
-            // 
-            this.spacer.Name = "spacer";
-            this.spacer.Size = new System.Drawing.Size(484, 17);
-            this.spacer.Spring = true;
-            // 
-            // counter
-            // 
-            this.counter.Name = "counter";
-            this.counter.Size = new System.Drawing.Size(48, 17);
-            this.counter.Text = "counter";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // refreshMenuItem
-            // 
-            this.refreshMenuItem.Name = "refreshMenuItem";
-            this.refreshMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.refreshMenuItem.Text = "Refresh";
-            this.refreshMenuItem.Click += new System.EventHandler(this.refreshMenuItem_Click);
             // 
             // mainForm
             // 
