@@ -15,6 +15,5 @@ GPLv3, see LICENSE file for details.
 
 Features
 ---
-> List Processes
-> Change Process Priority
-> Kill Process
+> List Processes, 
+> Kill a Process

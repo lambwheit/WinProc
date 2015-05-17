@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="core\process\ProcessManager.cs" />
+    <Compile Include="core\process\myProcess.cs" />
+    <Compile Include="core\process\myProcessList.cs" />
     <Compile Include="core\ui\forms\aboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +63,7 @@
     <Compile Include="core\ui\forms\mainForm.Designer.cs">
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="core\ui\InformUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="core\ui\forms\aboutForm.resx">

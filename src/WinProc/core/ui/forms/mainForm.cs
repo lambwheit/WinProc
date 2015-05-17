@@ -27,14 +27,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinProc.core.process;
 
 namespace WinProc.core.ui.forms
 {
     public partial class mainForm : Form
     {
+        private myProcessList _myProcList;
+
         public mainForm()
         {
             InitializeComponent();
+            _myProcList = new myProcessList();
+            _myProcList = ProcessManager.GetProcesses;
+            counter.Text = _myProcList.Count + " processes.";
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -48,6 +54,87 @@ namespace WinProc.core.ui.forms
             about.ShowDialog();
             about.Dispose();
             about = null;
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (myProcess myproc in _myProcList)
+                    procslist.Items.Add(new ListViewItem(new String[] { myproc.ID, myproc.Name, myproc.Priority, myproc.Filename }));
+            }
+            catch (Exception ex)
+            {
+                InformUser.showError(ex.Message);
+            }
+        }
+
+        private void killProcessMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (procslist.SelectedItems.Count == 1)
+                    if (ProcessManager.KillProcess(int.Parse(procslist.SelectedItems[0].SubItems[0].Text)))
+                    {
+                        InformUser.showInfo("The process has been killed..");
+                        RefreshProcs();
+                    }
+            }
+            catch (Exception ex)
+            {
+                InformUser.showError(ex.Message);
+            }
+        }
+
+        private void RefreshProcs()
+        {
+            try
+            {
+                procslist.Items.Clear();
+                _myProcList = ProcessManager.GetProcesses;
+                counter.Text = _myProcList.Count + " processes.";
+                foreach (myProcess myproc in _myProcList)
+                    procslist.Items.Add(new ListViewItem(new String[] { myproc.ID, myproc.Name, myproc.Priority, myproc.Filename }));
+            }
+            catch (Exception ex)
+            {
+                InformUser.showError(ex.Message);
+            }
+        }
+        private void popupMenu_Opening(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (procslist.SelectedItems.Count == 1)
+                    killProcessMenuItem.Visible = true;
+                else
+                    killProcessMenuItem.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                InformUser.showError(ex.Message);
+            }
+        }
+
+        private void procslist_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    Point pt = popupMenu.PointToScreen(e.Location);
+                    popupMenu.Show(pt);
+                }
+            }
+            catch (Exception ex)
+            {
+                InformUser.showError(ex.Message);
+            }
+        }
+
+        private void refreshMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshProcs();
         }
     }
 }
